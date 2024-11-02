@@ -9,10 +9,10 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     # まず、providerとuidでユーザーを検索
     user = where(provider: auth.provider, uid: auth.uid).first
-  
+
     # 見つからなければ、emailで検索して既存ユーザーを確認
     user ||= find_by(email: auth.info.email)
-  
+
     if user
       # 既存のユーザー情報を更新
       user.update(provider: auth.provider, uid: auth.uid)
