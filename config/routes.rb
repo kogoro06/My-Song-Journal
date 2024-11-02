@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }, path: "", path_names: {
+  sign_in: "users/auth/spotify", sign_out: "sign_out", registration: "sign_up"
+}
   resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
