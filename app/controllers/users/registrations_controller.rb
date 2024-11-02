@@ -1,6 +1,7 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     protected
+
     # hashをもとにresourceの新しいインスタンスを作る
     def build_resource(hash = {})
       hash[:uid] = User.create_unique_string
@@ -8,8 +9,10 @@ module Users
     end
 
     def update_resource(resource, params)
+      # パスワードが含まれている場合は通常の処理
       return super if params["password"].present?
-    　　　　# 現在のパスワードなしでアカウントの更新をする
+
+      # 現在のパスワードなしでアカウントの更新をする
       resource.update_without_password(params.except("current_password"))
     end
   end
