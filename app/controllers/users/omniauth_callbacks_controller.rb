@@ -2,8 +2,11 @@ module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     skip_before_action :verify_authenticity_token, only: :spotify
 
-
     def spotify
+      # 環境変数のデバッグログ
+      Rails.logger.debug "CLIENT_ID: #{ENV['CLIENT_ID']}"
+      Rails.logger.debug "CLIENT_SECRET: #{ENV['CLIENT_SECRET']}"
+
       # ユーザー情報を取得
       @user = User.from_omniauth(request.env["omniauth.auth"])
 
