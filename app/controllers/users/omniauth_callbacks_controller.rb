@@ -10,16 +10,15 @@ module Users
       # ユーザー情報を取得
       @user = User.from_omniauth(request.env["omniauth.auth"])
 
-      # @userがデータベースに保存されているかどうか
       if @user.persisted?
-        # 既存のユーザーがデータベースに保存されている場合、そのユーザーをサインイン状態にしておく
+        # ユーザーが存在する場合、サインインしてリダイレクト
         sign_in_and_redirect @user, event: :authentication
-        # サインインが成功した場合、成功メッセージを設定する
-        set_flash_message(:notice, :success, kind: "spotify") if is_navigational_format?
-      else # 保存されていない場合
-        # 一時的にセッションに認証情報を保存する
+
+        # 成功メッセージをフラッシュに設定
+        flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: "Spotify")
+      else
+        # ユーザーが保存されていない場合
         session["devise.spotify_data"] = request.env["omniauth.auth"].except(:extra)
-        # 新しいユーザーの登録ページにリダイレクト
         redirect_to new_user_registration_url
       end
     end

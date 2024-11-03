@@ -26,5 +26,5 @@ Rails.application.routes.draw do
 
 
   # Root path
-  root to: "static_pages#top", as: :static_pages_top
+  root to: "static_pages#top"
 end
