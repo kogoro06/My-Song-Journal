@@ -1,19 +1,28 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }, path: "", path_names: {
-  sign_in: "users/auth/spotify", sign_out: "sign_out", registration: "sign_up"
-}
-  resources :tasks
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Devise routes for email/password login and registration
+  devise_for :users, controllers: {
+    sessions: "devise/sessions",
+    registrations: "devise/registrations",
+    confirmations: "devise/confirmations",
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }, path: "", path_names: {
+    sign_in: "sign_in", sign_out: "sign_out", sign_up: "sign_up"
+  }
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # OAuth login for Spotify
+  devise_scope :user do
+    get "users/auth/spotify", to: "users/omniauth_callbacks#passthru", as: :new_user_spotify_session
+  end
+
+  resources :tasks
+  
+  # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/*
+  # PWA routes
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Root path
   root "tasks#index"
 end
