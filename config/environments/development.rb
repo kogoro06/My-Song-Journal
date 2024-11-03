@@ -82,11 +82,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port:                 587,
-    address:              'smtp.gmail.com',
-    domain:               'smtp.gmail.com',
-    user_name:            'mysongjournalconfirmable@gmail.com',
-    password:             'odni tvfp gzcc prvo',
-    authentication:       'login',
+    address:              "smtp.gmail.com",
+    domain:               "smtp.gmail.com",
+    user_name:            "mysongjournalconfirmable@gmail.com",
+    password:             "odni tvfp gzcc prvo",
+    authentication:       "login",
     enable_starttls_auto: true
   }
   config.log_level = :debug
