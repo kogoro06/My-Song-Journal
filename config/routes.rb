@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   # PWA routes
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  get "introduce", to: "introduce#index", as: :introduce
+
 
   # Root path
-  root "tasks#index"
+  root to: "static_pages#top", as: :static_pages_top
 end
