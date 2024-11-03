@@ -13,9 +13,9 @@ module Users
       if @user.persisted?
         # ユーザーが存在する場合、サインインしてリダイレクト
         sign_in_and_redirect @user, event: :authentication
-        
+
         # 成功メッセージをフラッシュに設定
-        flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: 'Spotify')
+        flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: "Spotify")
       else
         # ユーザーが保存されていない場合
         session["devise.spotify_data"] = request.env["omniauth.auth"].except(:extra)
