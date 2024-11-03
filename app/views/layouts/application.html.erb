@@ -18,8 +18,22 @@
   </head>
 
   <body class="wrap">
-      <%= render "shared/header" %>
+    <!-- フラッシュメッセージ -->
+    <div class="flash-container">
+      <% flash.each do |key, message| %>
+        <div class="flash-message <%= key %>">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- ヘッダー -->
+    <%= render "shared/header" %>
+
+    <!-- メインコンテンツ -->
     <%= yield %>
-      <%= render "shared/footer" %>
+
+    <!-- フッター -->
+    <%= render "shared/footer" %>
   </body>
 </html>
