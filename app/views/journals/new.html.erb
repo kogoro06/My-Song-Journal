@@ -1,0 +1,37 @@
+<h1>新しい日記を作成</h1>
+
+<%= form_with model: @journal, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, "本文" %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :emotion_id, "感情" %>
+    <%= f.collection_select :emotion_id, @emotions, :id, :name, { prompt: "感情を選択" }, { class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :song, "曲の選択" %>
+    <%= f.text_field :song, placeholder: "Spotifyで曲を検索", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :memo, "一言メモ" %>
+    <%= f.text_field :memo, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :public, "公開設定" %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "保存", class: "btn btn-primary" %>
+  </div>
+<% end %>
