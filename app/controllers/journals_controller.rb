@@ -19,11 +19,11 @@ class JournalsController < ApplicationController
 
   def search_song
     song_name = params[:song]
-    token = 'BQC0Qns-kNahoCnaICF98AiRfv55KqRJi_i8HaVIpze6seJ43RBE9aPfkQ3C585Q2n0U9nqDY0Z-elTq4BAo2xv0aoEmzCDgtqpL162ivwNxfOOcqlA' # ここに取得したアクセストークンを設定
+    token = "BQC0Qns-kNahoCnaICF98AiRfv55KqRJi_i8HaVIpze6seJ43RBE9aPfkQ3C585Q2n0U9nqDY0Z-elTq4BAo2xv0aoEmzCDgtqpL162ivwNxfOOcqlA" # ここに取得したアクセストークンを設定
 
-    uri = URI("https://api.spotify.com/v1/search?q=#{URI.encode(song_name)}&type=track")
+    uri = URI("https://api.spotify.com/v1/search?q=#{URI.encode_www_form_component(song_name)}&type=track")
     request = Net::HTTP::Get.new(uri)
-    request['Authorization'] = "Bearer #{token}"
+    request["Authorization"] = "Bearer #{token}"
 
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
       http.request(request)
