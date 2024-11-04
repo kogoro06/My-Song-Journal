@@ -1,0 +1,19 @@
+<div class="form-group">
+  <%= f.label :goal, "目標/To-Do" %>
+  <div id="goal-display" class="mb-2"></div>
+  <%= text_area_tag "new_goal", nil, class: "form-control", placeholder: "新しい目標を入力" %>
+  
+  <label for="goal_color">目標の色を選択:</label>
+  <%= select_tag "goal_color", options_for_select(
+    [["赤", "red"], ["青", "blue"], ["黄色", "yellow"], ["緑", "green"], ["黒", "black"], ["白", "white"], ["その他", "custom"]]
+  ), class: "form-control mt-2", id: "goal_color_select" %>
+  
+  <div id="goal_custom_color" style="display: none;">
+    <label for="custom_goal_bg_color">カスタム背景色:</label>
+    <%= color_field_tag "custom_goal_bg_color", "#000000", class: "form-control mt-2" %>
+    <label for="custom_goal_text_color">カスタム文字色:</label>
+    <%= color_field_tag "custom_goal_text_color", "#FFFFFF", class: "form-control mt-2" %>
+  </div>
+  
+  <button type="button" id="add-goal" class="btn btn-secondary mt-2">目標を追加</button>
+</div>

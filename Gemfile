@@ -65,3 +65,5 @@ gem "dotenv-rails", groups: [ :development, :test ]
 gem "omniauth"
 gem "omniauth-spotify"
 gem "omniauth-rails_csrf_protection"
+gem 'importmap-rails'
+gem 'sassc-rails'

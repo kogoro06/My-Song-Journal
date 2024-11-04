@@ -15,10 +15,10 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body class="wrap">
-    <!-- フラッシュメッセージ -->
     <div class="flash-container">
       <% flash.each do |key, message| %>
         <div class="flash-message <%= key %>">
@@ -27,13 +27,9 @@
       <% end %>
     </div>
 
-    <!-- ヘッダー -->
     <%= render "shared/header" %>
-
-    <!-- メインコンテンツ -->
     <%= yield %>
-
-    <!-- フッター -->
     <%= render "shared/footer" %>
+    <%= yield(:js) %>
   </body>
 </html>

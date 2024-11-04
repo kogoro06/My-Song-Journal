@@ -1,0 +1,19 @@
+<div class="form-group">
+  <%= f.label :activity, "今日の活動" %>
+  <div id="activity-list" class="mb-2"></div>
+  <%= text_field_tag "new_activity", nil, class: "form-control", placeholder: "新しい活動を入力" %>
+  
+  <label for="activity_color">活動の色を選択:</label>
+  <%= select_tag "activity_color", options_for_select(
+    [["赤", "red"], ["青", "blue"], ["黄色", "yellow"], ["緑", "green"], ["黒", "black"], ["白", "white"], ["その他", "custom"]]
+  ), class: "form-control mt-2", id: "activity_color_select" %>
+  
+  <div id="activity_custom_color" style="display: none;">
+    <label for="custom_activity_bg_color">カスタム背景色:</label>
+    <%= color_field_tag "custom_activity_bg_color", "#000000", class: "form-control mt-2" %>
+    <label for="custom_activity_text_color">カスタム文字色:</label>
+    <%= color_field_tag "custom_activity_text_color", "#FFFFFF", class: "form-control mt-2" %>
+  </div>
+  
+  <button type="button" id="add-activity" class="btn btn-secondary mt-2">活動を追加</button>
+</div>

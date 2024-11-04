@@ -1,0 +1,19 @@
+<div class="form-group">
+  <%= f.label :tags, "タグ" %>
+  <div id="tags-display" class="mb-2"></div>
+  <%= text_field_tag "new_tag", nil, class: "form-control", placeholder: "タグを入力" %>
+  
+  <label for="tag_color">タグの色を選択:</label>
+  <%= select_tag "tag_color", options_for_select(
+    [["赤", "red"], ["青", "blue"], ["黄色", "yellow"], ["緑", "green"], ["黒", "black"], ["白", "white"], ["その他", "custom"]]
+  ), class: "form-control mt-2", id: "tag_color_select" %>
+  
+  <div id="tag_custom_color" style="display: none;">
+    <label for="custom_tag_bg_color">カスタム背景色:</label>
+    <%= color_field_tag "custom_tag_bg_color", "#000000", class: "form-control mt-2" %>
+    <label for="custom_tag_text_color">カスタム文字色:</label>
+    <%= color_field_tag "custom_tag_text_color", "#FFFFFF", class: "form-control mt-2" %>
+  </div>
+  
+  <button type="button" id="add-tag" class="btn btn-secondary mt-2">タグを追加</button>
+</div>

@@ -1,0 +1,27 @@
+<div class="form-group">
+  <%= f.label :title, "タイトル" %>
+  <div id="title-display" class="mb-2"></div>
+  <%= text_field_tag "new_title", nil, class: "form-control", placeholder: "タイトルを入力" %>
+  
+  <label for="title_bg_color">背景色を選択:</label>
+  <%= select_tag "title_bg_color", options_for_select(
+    [["赤", "red"], ["青", "blue"], ["黄色", "yellow"], ["緑", "green"], ["黒", "black"], ["白", "white"], ["その他", "custom"]]
+  ), class: "form-control mt-2", id: "title_bg_color_select" %>
+  
+  <div id="title_custom_bg_color" style="display: none;">
+    <label for="custom_title_bg_color">カスタム背景色:</label>
+    <%= color_field_tag "custom_title_bg_color", "#000000", class: "form-control mt-2" %>
+  </div>
+
+  <label for="title_text_color">文字色を選択:</label>
+  <%= select_tag "title_text_color", options_for_select(
+    [["赤", "red"], ["青", "blue"], ["黄色", "yellow"], ["緑", "green"], ["黒", "black"], ["白", "white"], ["その他", "custom"]]
+  ), class: "form-control mt-2", id: "title_text_color_select" %>
+  
+  <div id="title_custom_text_color" style="display: none;">
+    <label for="custom_title_text_color">カスタム文字色:</label>
+    <%= color_field_tag "custom_title_text_color", "#FFFFFF", class: "form-control mt-2" %>
+  </div>
+
+  <button type="button" id="add-title" class="btn btn-secondary mt-2">タイトルを追加</button>
+</div>

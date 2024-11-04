@@ -1,0 +1,12 @@
+<!-- app/views/journals/_form_song.html.erb -->
+<div class="form-group">
+  <%= f.label :song_search, "曲名を入力" %>
+  <%= text_field_tag "song_search", nil, class: "form-control", placeholder: "曲名を入力" %>
+  
+  <%= f.label :artist_search, "アーティスト名を入力" %>
+  <%= text_field_tag "artist_search", nil, class: "form-control", placeholder: "アーティスト名を入力" %>
+  
+  <button type="button" id="search-song" class="btn btn-secondary mt-2">検索</button>
+  
+  <div id="song-results" class="mt-2"></div> <!-- 検索結果を表示する場所 -->
+</div>
