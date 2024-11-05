@@ -2,10 +2,6 @@ class JournalsController < ApplicationController
   def new
     @journal = Journal.new
     previous_journal = current_user.journals.order(date: :desc).first
-
-    if previous_journal
-      @journal.activity = previous_journal.goal.to_s.split("\n").map { |goal| { name: goal.strip, completed: false } }
-    end
   end
 
   def create
@@ -15,6 +11,18 @@ class JournalsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @journal = Journal.find(params[:id])
+  end
+
+  def edit
+    @journal = Journal.find(params[:id])
+  end
+
+  def update
+    @journal = Journal.find(params[:id])
   end
 
   def search_song
