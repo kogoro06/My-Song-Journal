@@ -1,0 +1,34 @@
+<div class="form-group">
+  <%= f.label :weather, "天気" %>
+  <div id="weather-display" class="mb-2"></div>
+  <%= f.select :weather, options_for_select(
+    [["晴れ", "晴れ"], ["曇り", "曇り"], ["雨", "雨"], ["雪", "雪"], ["その他", "custom"]]
+  ), { prompt: "天気を選択" }, { class: "form-control", id: "weather_select" } %>
+  
+  <div id="custom_weather_input" style="display: none;">
+    <label for="custom_weather">カスタム天気:</label>
+    <%= text_field_tag "custom_weather", nil, class: "form-control mt-2", placeholder: "天気を入力" %>
+    
+    <label for="weather_bg_color">背景色を選択:</label>
+    <%= select_tag "weather_bg_color", options_for_select(
+      [["赤", "red"], ["青", "blue"], ["黄色", "yellow"], ["緑", "green"], ["黒", "black"], ["白", "white"], ["その他", "custom"]]
+    ), class: "form-control mt-2", id: "weather_bg_color_select" %>
+    
+    <div id="weather_custom_bg_color" style="display: none;">
+      <label for="custom_weather_bg_color">カスタム背景色:</label>
+      <%= color_field_tag "custom_weather_bg_color", "#000000", class: "form-control mt-2" %>
+    </div>
+
+    <label for="weather_text_color">文字色を選択:</label>
+    <%= select_tag "weather_text_color", options_for_select(
+      [["赤", "red"], ["青", "blue"], ["黄色", "yellow"], ["緑", "green"], ["黒", "black"], ["白", "white"], ["その他", "custom"]]
+    ), class: "form-control mt-2", id: "weather_text_color_select" %>
+    
+    <div id="weather_custom_text_color" style="display: none;">
+      <label for="custom_weather_text_color">カスタム文字色:</label>
+      <%= color_field_tag "custom_weather_text_color", "#FFFFFF", class: "form-control mt-2" %>
+    </div>
+  </div>
+
+  <button type="button" id="add-weather" class="btn btn-secondary mt-2">天気を追加</button>
+</div>

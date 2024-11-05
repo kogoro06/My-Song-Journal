@@ -1,0 +1,28 @@
+<div class="min-h-screen flex flex-col justify-center items-center bg-customblue text-white">
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+    <h1 class="text-xl text-blackru font-bold mb-4">新しい日記を作成</h1>
+
+    <%= form_with model: @journal, local: true do |f| %>
+      <%= render "shared/error_messages", object: @journal %> 
+
+      <%= render "form_title", f: f %>
+      <%= render "form_emotion", f: f %>
+      <%= render "form_song", f: f %> 
+      <%= render "form_tag", f: f %>
+      <%= render "form_activity", f: f %>
+      <%= render "form_goal", f: f %>
+      <%= render "form_quote", f: f %>
+      <%= render "form_weather", f: f %> <!-- 天気の部分 -->
+
+      <!-- ボタン -->
+      <div class="form-group mt-4">
+        <%= f.submit "保存", class: "btn btn-primary" %>
+        <%= link_to "過去の日記を見る", journals_path, class: "btn btn-secondary ml-2" %>
+      </div>
+    <% end %>
+
+    <% content_for :js do %>
+      <%= javascript_include_tag "journal", "data-turbo-track": "reload", type: "module" %>
+    <% end %>
+  </div>
+</div>

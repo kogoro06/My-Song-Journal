@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  body: MyText
+  emotion_id: 1
+  song: MyString
+  memo: MyString
+  public: false
+  user: one
+
+two:
+  title: MyString
+  body: MyText
+  emotion_id: 1
+  song: MyString
+  memo: MyString
+  public: false
+  user: two
