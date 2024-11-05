@@ -1,0 +1,50 @@
+<div class="min-h-screen flex flex-col justify-center items-center text-black"
+     style="background-image: url(<%= asset_path('music-board.png') %>); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-lg" style="height: 400px;">
+    <h2 class="mb-4 text-xl font-bold text-center">新しい日記を作成</h2>
+    
+    <%= form_with model: @journal, local: true do |f| %>
+      <%= render "shared/error_messages", object: @journal %>
+
+      <!-- タイトル -->
+      <div class="form-group">
+        <%= render "form_title", f: f %>
+      </div>
+
+      <!-- 感情 -->
+      <div class="form-group">
+        <%= render "form_emotion", f: f %>
+      </div>
+
+      <!-- 本文 -->
+      <div class="form-group">
+        <%= render "form_body", f: f %>
+      </div>
+
+      <!-- 曲 -->
+      <div class="form-group">
+        <%= render "form_song", f: f %>
+      </div>
+
+      <!-- To-Do -->
+      <div class="form-group">
+        <%= render "form_todo", f: f %>
+      </div>
+
+      <!-- タグ -->
+      <div class="form-group">
+        <%= render "form_tag", f: f %>
+      </div>
+
+      <!-- 写真 -->
+      <div class="form-group">
+        <%= render "form_photo", f: f %>
+      </div>
+
+      <div class="form-group mt-4 text-center">
+        <button type="submit" class="btn btn-primary">保存</button>
+        <%= link_to "過去の日記を見る", journals_path, class: "btn btn-secondary ml-2" %>
+      </div>
+    <% end %>
+  </div>
+</div>

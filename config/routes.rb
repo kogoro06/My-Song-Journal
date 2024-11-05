@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
-  resources :journals, only: [ :new, :create, :show, :index ]
+  resources :journals do
+    collection do
+      get 'new_detail' # 日記の詳細作成ページへのルートを追加
+    end
+  end
 
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
@@ -25,7 +29,6 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "introduce", to: "introduce#index", as: :introduce
   get "search_song", to: "journals#search_song"
-
 
   # Root path
   root to: "static_pages#top"
