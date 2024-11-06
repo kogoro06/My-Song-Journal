@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :tasks
   resources :journals do
     collection do
-      get 'new_detail'
+      get "new_detail"
     end
   end
 
