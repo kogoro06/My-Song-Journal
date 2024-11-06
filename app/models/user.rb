@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[spotify]
 
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
+  validates :name, presence: true #追記
+  validates :profile, length: { maximum: 200 } #追記
 
   def self.from_omniauth(auth)
     # まず、providerとuidでユーザーを検索
