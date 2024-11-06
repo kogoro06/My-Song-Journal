@@ -1,0 +1,15 @@
+<!-- app/views/journals/index.html.erb -->
+<div class="min-h-screen flex flex-col justify-center items-center bg-customblue text-black">
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-4">過去の日記</h1>
+    <% @journals.each do |journal| %>
+      <div class="mb-4">
+        <h2 class="font-semibold"><%= journal.title %></h2>
+        <p><%= journal.created_at.strftime("%Y年%m月%d日") %></p>
+        <%= link_to '詳細', detail_journal_path(journal), class: 'btn btn-primary' %>
+        <%= button_to '削除', journal_path(journal), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger ml-2' %>
+      </div>
+    <% end %>
+    <%= link_to '新しい日記を作成', new_journal_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

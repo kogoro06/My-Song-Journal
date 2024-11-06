@@ -1,4 +1,3 @@
-# config/routes.rb
 Rails.application.routes.draw do
   # Devise routes for email/password login and registration
   devise_for :users, controllers: {
@@ -26,6 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :user_profiles, only: [ :edit, :update, :show ]
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 

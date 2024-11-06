@@ -1,0 +1,22 @@
+<%= render "user_profiles/shared/form_layout" do %>
+  <h1>プロフィール編集</h1>
+  <span>現在ログイン中のユーザー：<%= current_user.name %></span>
+
+  <%= form_for(@user, url: user_profile_path(@user), html: { multipart: true }) do |f| %>
+    <div>
+      <%= f.label :name, "ニックネーム", class: "text-white" %><br>
+      <%= f.text_field :name, autofocus: true, value: @user.name %>
+    </div>
+    <div>
+      <%= f.label :profile, "自己紹介" %><br>
+      <%= f.text_area :profile, value: @user.profile %>
+    </div>
+    <div>
+      <%= f.label :profile_image, "プロフィール画像" %><br>
+      <%= f.file_field :profile_image %>
+    </div>
+    <div>
+     <%= link_to 'プロフィールを更新', user_profile_path(@user), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% end %>

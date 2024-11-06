@@ -1,0 +1,8 @@
+<%= render "user_profiles/shared/form_layout" do %>
+  <h1><%= @user.name %>のプロフィール</h1>
+  <p>自己紹介: <%= @user.profile %></p>
+  <% if @user.profile_image.attached? %>
+    <%= image_tag @user.profile_image %>
+  <% end %>
+  <%= link_to 'プロフィールを編集', edit_user_profile_path(@user), class: 'btn btn-primary' %>
+<% end %>
