@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :tasks
   resources :journals do
     collection do
-      get "new_detail" # 日記の詳細作成ページへのルートを追加
+      get "new_detail"
     end
   end
 
