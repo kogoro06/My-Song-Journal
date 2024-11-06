@@ -13,16 +13,17 @@ class JournalsController < ApplicationController
     end
   end
 
-  def show
-    @journal = Journal.find(params[:id])
-  end
-
   def edit
     @journal = Journal.find(params[:id])
   end
 
   def update
     @journal = Journal.find(params[:id])
+    if @journal.update(journal_params)
+      redirect_to detail_journal_path(@journal), notice: "日記が更新されました"
+    else
+      render :edit
+    end
   end
 
   def search_song

@@ -119,3 +119,11 @@
   .box-newusr a:hover {
     background: #e7e9ec;
   }
+
+  .form-control::placeholder {
+    color: white; /* プレースホルダーテキストを白に */
+  }
+  .form-control {
+    color: white; /* 入力した文字を白に */
+  }
+  
