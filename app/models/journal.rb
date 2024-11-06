@@ -1,5 +1,6 @@
 class Journal < ApplicationRecord
   belongs_to :user
+  belongs_to :emotion, optional: true
 
   validates :date, presence: true
 

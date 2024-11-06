@@ -1,3 +1,4 @@
+<!-- app/views/journals/new.html.erb -->
 <div class="min-h-screen flex flex-col justify-center items-center bg-customblue text-black">
   <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
     <div class="container mx-auto mt-10">
@@ -12,7 +13,7 @@
           </div>
 
           <div class="flex justify-center">
-            <%= link_to "リリックを作成(日記詳細ページに飛べます)", new_detail_journals_path, class: "btn btn-primary w-full" %>
+            <%= f.submit "リリックを作成(日記詳細ページに飛べます)", class: "btn btn-primary w-full" %>
           </div>
         <% end %>
       </div>

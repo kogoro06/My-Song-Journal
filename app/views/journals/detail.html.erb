@@ -1,0 +1,37 @@
+<div class="min-h-screen flex flex-col justify-center items-center bg-customblue ">
+  <div class="p-6 rounded w-full max-w-md">
+      <!-- 日記の詳細情報編集 -->
+      <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+        <h2 class="text-2xl font-bold mb-4">日記の詳細設定</h2>
+
+        <%= form_with model: @journal, url: journal_path(@journal), method: :patch, local: true do |form| %>
+          <div class="mb-4">
+            <strong>気分:</strong>
+            <%= form.text_field :emotion, class: "form-control", placeholder: "気分を入力" %>
+          </div>
+
+          <div class="mb-4">
+            <strong>曲名:</strong>
+            <%= form.text_field :song, class: "form-control", placeholder: "曲名を入力" %>
+          </div>
+
+          <div class="mb-4">
+            <strong>アーティスト名:</strong>
+            <%= form.text_field :artist_name, class: "form-control", placeholder: "アーティスト名を入力" %>
+          </div>
+
+          <div class="mb-4">
+            <strong>一言メモ:</strong>
+            <%= form.text_area :memo, class: "form-control", placeholder: "一言メモを入力" %>
+          </div>
+
+          <%= form.submit "保存する", class: "btn btn-primary mt-4 w-full" %>
+        <% end %>
+
+        <div class="mt-6">
+          <%= link_to '戻る', journals_path, class: 'btn btn-secondary w-full' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

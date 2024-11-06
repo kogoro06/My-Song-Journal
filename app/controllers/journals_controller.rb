@@ -1,20 +1,16 @@
+# app/controllers/journals_controller.rb
 class JournalsController < ApplicationController
   def new
     @journal = Journal.new
-    previous_journal = current_user.journals.order(date: :desc).first
   end
 
   def create
     @journal = current_user.journals.build(journal_params)
     if @journal.save
-      redirect_to @journal, notice: "日記が作成されました"
+      redirect_to detail_journal_path(@journal), notice: "日記が作成されました"
     else
       render :new
     end
-  end
-
-  def show
-    @journal = Journal.find(params[:id])
   end
 
   def edit
@@ -23,6 +19,11 @@ class JournalsController < ApplicationController
 
   def update
     @journal = Journal.find(params[:id])
+    if @journal.update(journal_params)
+      redirect_to detail_journal_path(@journal), notice: "日記が更新されました"
+    else
+      render :edit
+    end
   end
 
   def search_song
@@ -40,8 +41,8 @@ class JournalsController < ApplicationController
     render json: JSON.parse(response.body)
   end
 
-  def new_detail
-    @journal = Journal.new
+  def detail
+    @journal = Journal.find(params[:id])
   end
 
   private

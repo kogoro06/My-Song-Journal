@@ -1,3 +1,4 @@
+# config/routes.rb
 Rails.application.routes.draw do
   # Devise routes for email/password login and registration
   devise_for :users, controllers: {
@@ -15,9 +16,13 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
+
   resources :journals do
+    member do
+      get "detail"  # 日記の詳細表示に使うルート
+    end
     collection do
-      get "new_detail"
+      get "new_detail"  # 新規日記詳細作成用のルート
     end
   end
 
