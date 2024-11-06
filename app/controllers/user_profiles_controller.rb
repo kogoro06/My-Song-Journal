@@ -1,5 +1,5 @@
 class UserProfilesController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [ :show, :edit, :update ]
 
   def show
     # @userはset_userで設定されている
@@ -11,7 +11,7 @@ class UserProfilesController < ApplicationController
 
   def update
     if @user.update(user_profile_params)
-      redirect_to user_profile_path(@user), notice: 'プロフィールが更新されました。'
+      redirect_to user_profile_path(@user), notice: "プロフィールが更新されました。"
     else
       render :edit
     end
