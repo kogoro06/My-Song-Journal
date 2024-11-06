@@ -6,7 +6,7 @@ class CreateJournals < ActiveRecord::Migration[7.2]
       t.integer :emotion_id
       t.string :song
       t.string :memo
-      t.boolean :public
+      t.boolean :public, default: false
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

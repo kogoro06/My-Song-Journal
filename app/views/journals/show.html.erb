@@ -1,0 +1,13 @@
+<!-- app/views/journals/show.html.erb -->
+<%= render "journals/shared/form_layout" do %>
+  <h1><%= @journal.title %></h1>
+  <p><%= @journal.body %></p>
+  <p>感情: <%= @journal.emotion.try(:name) %></p>
+  <p>公開設定: <%= @journal.public ? '公開' : '非公開' %></p>
+  
+  <!-- Spotifyで選択した曲を表示 -->
+  <p>選択した曲: <%= @journal.song.present? ? @journal.song : "未選択" %></p>
+
+  <%= link_to '編集', edit_journal_path(@journal), class: 'btn btn-primary' %>
+  <%= link_to '戻る', journals_path, class: 'btn btn-secondary' %>
+<% end %>

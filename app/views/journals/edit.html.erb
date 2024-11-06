@@ -1,0 +1,53 @@
+<!-- app/views/journals/edit.html.erb -->
+<%= render "journals/shared/form_layout" do %>
+  <h1>日記編集</h1>
+  <%= form_with model: @journal, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title, class: "form-control", value: @journal.title %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body, "本文" %>
+      <%= f.text_area :body, class: "form-control", value: @journal.body %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :emotion_id, "感情" %>
+      <%= f.collection_select :emotion_id, Emotion.all, :id, :name, include_blank: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :public, "公開設定" %>
+      <%= f.check_box :public %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :song, "曲を選択" %>
+      <%= text_field_tag :song_query, nil, placeholder: "曲名を入力", class: "form-control" %>
+      <%= button_tag "検索", type: :button, class: "btn btn-secondary", onclick: "searchSongs()" %>
+      <div id="song-results" class="mt-2"></div>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "更新", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>
+
+<script>
+  function searchSongs() {
+    const query = document.getElementById('song_query').value;
+    fetch(`/journals/search_song?song=${query}`)
+      .then(response => response.json())
+      .then(songs => {
+        const resultsDiv = document.getElementById('song-results');
+        resultsDiv.innerHTML = '';
+        songs.forEach(song => {
+          const songItem = document.createElement('div');
+          songItem.innerHTML = `<input type="radio" name="journal[song]" value="${song.id}"> ${song.name} by ${song.artists.join(', ')}`;
+          resultsDiv.appendChild(songItem);
+        });
+      });
+  }
+</script>

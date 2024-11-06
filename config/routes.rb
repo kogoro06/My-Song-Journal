@@ -22,10 +22,12 @@ Rails.application.routes.draw do
     end
     collection do
       get "new_detail"  # 新規日記詳細作成用のルート
+      get "search" 
     end
   end
 
-  resources :user_profiles, only: [ :edit, :update, :show ]
+  resources :user_profiles, only: [:edit, :update, :show, :index]
+
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 
