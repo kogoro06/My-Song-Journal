@@ -4,7 +4,7 @@
     <div class="flex items-center">
       <span class="text-gray-600 font-bold"><%= @current_user_decorated.full_name %></span>
       <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'text-center text-gray-600 font-bold text-gray-400 ml-4' %>
-      <%= link_to 'プロフィール', edit_user_registration_path, class: 'text-gray-600 font-bold ml-4' %>
+      <%= link_to 'プロフィール', user_profile_path(current_user), class: 'text-gray-600 font-bold ml-4' %>
     </div>
   <% else %>
     <%= link_to 'ログイン', new_user_session_path, class: 'text-center text-gray-600 font-bold' %>

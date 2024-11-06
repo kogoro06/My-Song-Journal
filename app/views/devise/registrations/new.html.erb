@@ -10,6 +10,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :profile_image, t('activerecord.attributes.user.profile_ima')%><br />
+    <%= f.file_field :profile_image %>
+  </div>
+
+  <div class="field">
     <%= f.label :email, t('activerecord.attributes.user.email') %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
