@@ -40,6 +40,10 @@ class JournalsController < ApplicationController
     render json: JSON.parse(response.body)
   end
 
+  def new_detail
+    @journal = Journal.new
+  end
+
   private
 
   def journal_params
