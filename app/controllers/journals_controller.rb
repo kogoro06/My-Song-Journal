@@ -1,6 +1,6 @@
 class JournalsController < ApplicationController
   before_action :set_user
-  before_action :set_journal, only: [:edit, :update, :show]
+  before_action :set_journal, only: [ :edit, :update, :show ]
 
   def new
     @journal = Journal.new
