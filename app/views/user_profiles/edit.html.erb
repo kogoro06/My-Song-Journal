@@ -2,9 +2,9 @@
   <h1>プロフィール編集</h1>
   <span>現在ログイン中のユーザー：<%= current_user.name %></span>
 
-  <%= form_for(@user, url: user_profile_path(@user), html: { multipart: true }) do |f| %>
+  <%= form_for(@user, url: user_profile_path(@user), method: :patch, html: { multipart: true }) do |f| %>
     <div>
-      <%= f.label :name, "ニックネーム", class: "text-white" %><br>
+      <%= f.label :name, "ニックネーム" %><br>
       <%= f.text_field :name, autofocus: true, value: @user.name %>
     </div>
     <div>
@@ -16,7 +16,7 @@
       <%= f.file_field :profile_image %>
     </div>
     <div>
-     <%= link_to 'プロフィールを更新', user_profile_path(@user), class: 'btn btn-primary' %>
+      <%= f.submit 'プロフィールを更新', class: 'btn btn-primary' %>
     </div>
   <% end %>
 <% end %>
