@@ -1,0 +1,13 @@
+<!-- app/views/journals/_form_emotion_show.html.erb -->
+<div class="emotion-display mt-3">
+  <% if @journal.emotion %>
+    <p>気分: <%= @journal.emotion.name %></p>
+    <% if @journal.emotion.image_path.present? %>
+      <%= image_tag @journal.emotion.image_path, alt: @journal.emotion.name, class: 'emotion-image' %>
+    <% else %>
+      <p>画像がありません</p>
+    <% end %>
+  <% else %>
+    <p>気分: 未選択</p>
+  <% end %>
+</div>

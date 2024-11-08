@@ -10,3 +10,21 @@
   
   <div id="song-results" class="mt-2"></div> <!-- 検索結果を表示する場所 -->
 </div>
+
+
+<script>
+  function searchSongs() {
+    const query = document.getElementById('song_query').value;
+    fetch(`/journals/search_song?song=${query}`)
+      .then(response => response.json())
+      .then(songs => {
+        const resultsDiv = document.getElementById('song-results');
+        resultsDiv.innerHTML = '';
+        songs.forEach(song => {
+          const songItem = document.createElement('div');
+          songItem.innerHTML = `<input type="radio" name="journal[song]" value="${song.id}"> ${song.name} by ${song.artists.join(', ')}`;
+          resultsDiv.appendChild(songItem);
+        });
+      });
+  }
+</script>
