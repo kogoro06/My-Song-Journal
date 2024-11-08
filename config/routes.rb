@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:show]
+
+
   resources :user_profiles, only: [ :edit, :update, :show, :index ]
 
   # Health check route
