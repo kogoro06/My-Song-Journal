@@ -1,9 +1,14 @@
 require "test_helper"
+include Devise::Test::IntegrationHelpers
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:one)
+    sign_in @user
+  end
+
   test "should get show" do
-    user = users(:one)  # テスト用ユーザーをfixturesやfactoryで準備
-    get user_url(user)  # `user_url`でユーザーIDに基づいたURLを取得
+    get users_show_url
     assert_response :success
   end
 end
