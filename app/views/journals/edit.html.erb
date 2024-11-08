@@ -1,6 +1,7 @@
 <!-- app/views/journals/edit.html.erb -->
 <%= render "journals/shared/form_layout" do %>
 <%= render "journals/form_title"%>
+<%= render "journals/form_date"%>
   <%= form_with model: @journal, local: true do |f| %>
 
     <div class="form-group">
