@@ -19,14 +19,6 @@
   </head>
 
   <body class="wrap">
-    <div class="flash-container">
-      <% flash.each do |key, message| %>
-        <div class="flash-message <%= key %>">
-          <%= message %>
-        </div>
-      <% end %>
-    </div>
-
     <%= render "shared/header" %>
     <%= yield %>
     <%= render "shared/footer" %>

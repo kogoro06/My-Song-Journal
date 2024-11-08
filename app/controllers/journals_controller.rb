@@ -6,17 +6,15 @@ class JournalsController < ApplicationController
     @journal = Journal.new
   end
 
-  def create
-    @journal = Journal.new(journal_params)
-    @journal.user = @user if @user.present? # ユーザーが存在する場合にセット
-
-    if @journal.valid?
-      @journal.save
-      redirect_to @journal, notice: '日記が作成されました。'
-    else
-      render :new
-    end
+def create
+  @journal = current_user.journals.build(journal_params) # current_userを使って関連付け
+  if @journal.save
+    # 作成後に「詳細設定」ページにリダイレクト
+    redirect_to edit_journal_path(@journal), notice: "日記が作成されました。詳細設定を行ってください。"
+  else
+    render :new
   end
+end
 
   def edit
     @journal = Journal.find(params[:id])
@@ -25,7 +23,7 @@ class JournalsController < ApplicationController
   def update
     @journal = Journal.find(params[:id])
     if @journal.update(journal_params)
-      redirect_to detail_journal_path(@journal), notice: "日記が更新されました"
+      redirect_to journal_path(@journal), notice: "日記が更新されました。"
     else
       render :edit
     end
