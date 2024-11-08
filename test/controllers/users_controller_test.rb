@@ -1,14 +1,15 @@
 require "test_helper"
-include Devise::Test::IntegrationHelpers
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers  # Deviseのヘルパーをインクルード
+
   setup do
     @user = users(:one)
-    sign_in @user
+    sign_in @user  # ユーザーをサインイン
   end
 
   test "should get show" do
-    get users_show_url
+    get user_url(@user)  # 適切なユーザーのURLにアクセス
     assert_response :success
   end
 end
