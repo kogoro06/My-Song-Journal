@@ -1,15 +1,58 @@
-<!-- app/views/journals/index.html.erb -->
-<div class="min-h-screen flex flex-col justify-center items-center bg-customblue text-black">
-  <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-4">過去の日記</h1>
-    <% @journals.each do |journal| %>
-      <div class="mb-4">
-        <h2 class="font-semibold"><%= journal.title %></h2>
-        <p><%= journal.created_at.strftime("%Y年%m月%d日") %></p>
-        <%= link_to '詳細', detail_journal_path(journal), class: 'btn btn-primary' %>
-        <%= button_to '削除', journal_path(journal), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger ml-2' %>
-      </div>
-    <% end %>
-    <%= link_to '新しい日記を作成', new_journal_path, class: 'btn btn-secondary' %>
+<div class="h-screen flex flex-col justify-center items-center bg-customblue">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-sm">
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <!-- 検索フォーム -->
+      <form action="<%= search_journals_path %>" method="get">
+        <div class="input-group mb-3">
+          <input class="form-control" placeholder="検索ワード" type="search" name="query"/>
+          <div class="input-group-append">
+            <input type="submit" value="検索" class="btn btn-primary"/>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
+  <!-- 日記一覧 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @journals.present? %>
+          <% @journals.each do |journal| %>
+            <div class="col-sm-12 col-lg-4 mb-3">
+              <div id="journal-id-<%= journal.id %>">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <h4 class="card-title">
+                        <%= link_to journal.title, journal_path(journal) %>
+                      </h4>
+                      <div class='ms-auto'>
+                        <%= link_to do %>
+                          <i class="bi bi-pencil-fill mr-1"></i> 編集
+                        <% end %>
+                        <%= link_to do %>
+                          <i class="bi bi-trash-fill mr-1"></i> 削除
+                        <% end %>
+                      </div>
+                    </div>
+                    <ul class="list-inline">
+                      <li><i class="bi bi-person"></i><%= journal.user.decorate.full_name %></li>
+                      <li><i class="bi bi-calendar"></i><%= l journal.created_at, format: :short %></li>
+                    </ul>
+                    <p class="card-text">本文: <%= journal.body.present? ? journal.body.truncate(100) : '本文がありません' %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="mb-3">日記がありません</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 </div>

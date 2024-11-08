@@ -1,5 +1,6 @@
-class AddUnconfirmedEmailToUsers < ActiveRecord::Migration[7.2]
+class AddUnconfirmedEmailToUsers < ActiveRecord::Migration[6.1]
   def change
-    add_column :users, :unconfirmed_email, :string
+    # unconfirmed_email カラムが存在しない場合のみ追加
+    add_column :users, :unconfirmed_email, :string unless column_exists?(:users, :unconfirmed_email)
   end
 end

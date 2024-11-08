@@ -16,6 +16,11 @@
             <%= f.submit "リリックを作成(日記詳細ページに飛べます)", class: "btn btn-primary w-full" %>
           </div>
         <% end %>
+
+        <!-- 日記一覧へのリンクボタン -->
+        <div class="flex justify-center mt-4">
+          <%= link_to '過去に作成した日記一覧', journals_path, class: 'btn btn-secondary w-full' %>
+        </div>
       </div>
     </div>
   </div>
