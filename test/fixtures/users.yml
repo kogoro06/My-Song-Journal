@@ -1,7 +1,7 @@
 one:
   email: test_user_one@example.com
-  password_digest: <%= BCrypt::Password.create('password') %>  # パスワードのハッシュ
+  password_digest: $2a$12$uhpHVUMO7jiw4AQtTackP..HqMCmj3.jpEGnTSuWY1Pxhc3bt2v8e
 
 two:
   email: test_user_two@example.com
-  password_digest: <%= BCrypt::Password.create('password') %>  # パスワードのハッシュ
+  password_digest: $2a$12$uhpHVUMO7jiw4AQtTackP..HqMCmj3.jpEGnTSuWY1Pxhc3bt2v8e
