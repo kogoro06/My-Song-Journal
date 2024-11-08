@@ -1,6 +1,7 @@
 <!-- app/views/journals/show.html.erb -->
 <%= render "journals/shared/form_layout" do %>
-  <h1><%= @journal.title %></h1>
+<%= render "journals/form_title"%>
+<%= render "journals/form_date"%>
   <p><%= @journal.body %></p>
   <p>感情: <%= @journal.emotion.try(:name) %></p>
   <p>公開設定: <%= @journal.public ? '公開' : '非公開' %></p>
