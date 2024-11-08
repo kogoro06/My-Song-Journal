@@ -1,0 +1,13 @@
+<!-- app/views/journals/_form_emotion_edit.html.erb -->
+<div class="form-group">
+  <%= f.label :emotion_id, "気分" %>
+  <%= f.collection_select :emotion_id, Emotion.all, :id, :name, { include_blank: "選択してください" }, { class: "form-control", id: "emotion_select" } %>
+  <div id="emotion-display" class="mt-3"></div>
+</div>
+
+<div id="custom_emotion_input" style="display: none;">
+  <div class="form-group">
+    <%= label_tag :custom_emotion, "カスタム感情" %>
+    <%= text_field_tag :custom_emotion, nil, class: "form-control", placeholder: "カスタム感情を入力" %>
+  </div>
+</div>

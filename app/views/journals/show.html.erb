@@ -1,9 +1,25 @@
 <!-- app/views/journals/show.html.erb -->
 <%= render "journals/shared/form_layout" do %>
-<%= render "journals/form_title"%>
-<%= render "journals/form_date"%>
+  <%= render "journals/form_title" %>
+  <%= render "journals/form_date" %>
+  
   <p><%= @journal.body %></p>
-  <p>感情: <%= @journal.emotion.try(:name) %></p>
+  
+    <%= render "journals/form_emotion_show" %>
+  
+  <div class="emotion-display mt-3">
+    <% if @journal.emotion %>
+      <p>気分: <%= @journal.emotion.name %></p>
+      <% if @journal.emotion.image_path.present? %>
+        <%= image_tag @journal.emotion.image_path, alt: @journal.emotion.name, class: 'emotion-image' %>
+      <% else %>
+        <p>画像がありません</p>
+      <% end %>
+    <% else %>
+      <p>気分: 未選択</p>
+    <% end %>
+  </div>
+
   <p>公開設定: <%= @journal.public ? '公開' : '非公開' %></p>
   
   <!-- Spotifyで選択した曲を表示 -->

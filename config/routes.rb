@@ -16,6 +16,12 @@ Rails.application.routes.draw do
 
   resources :tasks
 
+  resources :emotions, only: [] do
+    member do
+      get :image
+    end
+  end
+
   resources :journals do
     member do
       get "detail"  # 日記の詳細表示に使うルート

@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Emotion.create([
+  { name: "喜び", image_path: "happy.png" },
+  { name: "怒り", image_path: "angry.png" },
+  { name: "哀しみ", image_path: "sad.png" },
+  { name: "楽しさ", image_path: "fun.png" },
+  { name: "中立", image_path: "neutral.png" },
+  { name: "混乱", image_path: "confusion.png" }
+])
