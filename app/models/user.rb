@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
   validates :name, presence: true
   validates :profile, length: { maximum: 200 }
-  
+
   # Email validation with format and uniqueness
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,

@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_06_161503) do
     t.integer "emotion_id"
     t.string "song"
     t.string "memo"
-    t.boolean "public"
+    t.boolean "public", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,6 +77,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_06_161503) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "uid"
@@ -86,10 +90,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_06_161503) do
     t.date "date_of_birth"
     t.string "username"
     t.string "spotify_id"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at", precision: nil
-    t.datetime "confirmation_sent_at", precision: nil
-    t.string "unconfirmed_email"
     t.string "last_name"
     t.string "first_name"
     t.string "profile"
