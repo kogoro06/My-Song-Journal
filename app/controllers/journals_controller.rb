@@ -48,15 +48,15 @@ end
   def search_song
     song_name = params[:song]
     token = "YOUR_ACCESS_TOKEN" # ここに取得したアクセストークンを設定
-  
+
     uri = URI("https://api.spotify.com/v1/search?q=#{URI.encode_www_form_component(song_name)}&type=track")
     request = Net::HTTP::Get.new(uri)
     request["Authorization"] = "Bearer #{token}"
-  
+
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
       http.request(request)
     end
-  
+
     songs = JSON.parse(response.body)["tracks"]["items"].map do |track|
       {
         id: track["id"],
@@ -64,10 +64,10 @@ end
         artists: track["artists"].map { |artist| artist["name"] }
       }
     end
-  
+
     render json: songs
   end
-  
+
 
   def detail
     @journal = Journal.find(params[:id])
