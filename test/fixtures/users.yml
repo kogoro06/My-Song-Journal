@@ -1,7 +1,7 @@
 one:
   email: test_user_one@example.com
-  password_digest: $2a$12$uhpHVUMO7jiw4AQtTackP..HqMCmj3.jpEGnTSuWY1Pxhc3bt2v8e
+  encrypted_password: $2a$12$4.Y6fD2eeVNakl4VYFXMpu0mr5b1UrgjlFYdZH/aUiX4CPzIStQRu
 
 two:
   email: test_user_two@example.com
-  password_digest: $2a$12$uhpHVUMO7jiw4AQtTackP..HqMCmj3.jpEGnTSuWY1Pxhc3bt2v8e
+  encrypted_password: $2a$12$4.Y6fD2eeVNakl4VYFXMpu0mr5b1UrgjlFYdZH/aUiX4CPzIStQRu
